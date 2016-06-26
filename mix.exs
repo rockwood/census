@@ -16,6 +16,7 @@ defmodule Census.Mixfile do
 
   defp deps do
     [
+      {:poison, "~> 2.0"},
       {:httpoison, "~> 0.9.0"}
     ]
   end

@@ -1,7 +1,9 @@
 defimpl Census.Adapter, for: Census.Client do
+  alias Census.Response
+
   def fetch(client, query) do
-    case HTTPoison.get(endpoint(client), [], params: params(client, query), recv_timeout: 10000) do
-      {200, response} -> {:ok, response}
+    case HTTPoison.get(endpoint(client), [], params: params(client, query), recv_timeout: 30_000) do
+      {:ok, response} -> {:ok, Response.decode!(response.body)}
     end
   end
 
