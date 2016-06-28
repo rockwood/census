@@ -1,5 +1,5 @@
 defmodule Census.Query do
-  defstruct fields: "", level: "", within: ""
+  defstruct get: "", foreach: "", within: ""
 
   def new(attrs) do
     struct(__MODULE__, attrs)

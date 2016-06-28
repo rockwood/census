@@ -7,9 +7,9 @@ defmodule Census.Endpoint do
     "http://api.census.gov/data/#{vintage}/#{String.downcase(dataset)}?key=#{api_key}"
   end
 
-  defp query_params(%{fields: fields, level: level, within: within}) do
+  defp query_params(%{get: get, foreach: foreach, within: within}) do
     [:get, :for, :in]
-    |> Enum.zip([fields, level, within])
+    |> Enum.zip([get, foreach, within])
     |> Enum.reject(fn {_, v} -> v == nil || v == "" end)
     |> Enum.map(fn {k, v} -> "#{k}=#{v}" end)
     |> Enum.join("&")

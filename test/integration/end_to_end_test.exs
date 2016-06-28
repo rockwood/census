@@ -8,7 +8,7 @@ defmodule Census.EndToEndTest do
   describe "fetch/2" do
     setup do
       client = Client.new(@api_key)
-      query = Query.new(fields: "P0010001", level: "STATE:01")
+      query = Query.new(get: "P0010001", foreach: "STATE:01")
       {:ok, client: client, query: query}
     end
 

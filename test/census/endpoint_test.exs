@@ -5,7 +5,7 @@ defmodule Census.EndpointTest do
   describe "build/2" do
     setup do
       client = Client.new("API_KEY", vintage: 2000, dataset: "DATASET")
-      query = Query.new(fields: "FIELDS", level: "STATE:01", within: "COUNTY:02")
+      query = Query.new(get: "FIELDS", foreach: "STATE:01", within: "COUNTY:02")
       {:ok, client: client, query: query}
     end
 
