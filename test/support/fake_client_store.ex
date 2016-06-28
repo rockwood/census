@@ -1,23 +1,19 @@
 defmodule Census.FakeClientStore do
-  alias Census.Response
+  alias Census.Endpoint
 
   def start_link do
     Agent.start_link(fn -> %{} end, name: __MODULE__)
   end
 
-  def enqueue_response(query, response_body) do
+  def enqueue_response(client, query, response) do
     Agent.update __MODULE__, fn(state) ->
-      Map.put(state, state_key(query), Response.decode!(response_body))
+      Map.put(state, Endpoint.build(client, query), response)
     end
   end
 
-  def get_response(query) do
+  def get_response(client, query) do
     Agent.get __MODULE__, fn(state) ->
-      state[state_key(query)]
+      state[Endpoint.build(client, query)]
     end
-  end
-
-  defp state_key(query) do
-    "#{query.fields}-#{query.level}"
   end
 end

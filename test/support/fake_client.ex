@@ -1,5 +1,5 @@
 defmodule Census.FakeClient do
-  defstruct dataset: "SF1", vintage: "2010"
+  defstruct api_key: "", dataset: "SF1", vintage: "2010"
 
   def new(options \\ []) do
     struct(__MODULE__, options)
