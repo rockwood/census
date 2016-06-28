@@ -6,8 +6,9 @@ defmodule CensusTest do
   describe "fetch/2" do
     setup do
       client = FakeClient.new()
-      query = Query.new(fields: "P0010001", level: "STATE:36")
-      FakeClientStore.enqueue_response(query, File.read!("test/fixtures/ohio_pop.json"))
+      query = Query.new(api_key: "1234", fields: "P0010001", level: "STATE:36")
+      fake_response = %{status_code: 200, body: File.read!("test/fixtures/ohio_pop.json")}
+      FakeClientStore.enqueue_response(client, query, fake_response)
       {:ok, client: client, query: query}
     end
 
