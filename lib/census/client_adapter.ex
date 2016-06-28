@@ -1,5 +1,5 @@
 defimpl Census.Adapter, for: Census.Client do
-  alias Census.{Endpoint, Response}
+  alias Census.{Query, Endpoint, Response}
 
   @connect_options [
     timeout: 30_000,
@@ -7,8 +7,9 @@ defimpl Census.Adapter, for: Census.Client do
     recv_timeout: 30_000,
   ]
 
-  def fetch(client, query) do
-    case HTTPoison.get(Endpoint.build(client, query), [], @connect_options) do
+  def fetch(client, params) do
+    query = Query.new(client, params)
+    case HTTPoison.get(Query.url(query), [], @connect_options) do
       {:ok, response} -> Response.decode(response)
       {_, error} -> {:error, to_string(error.reason)}
     end

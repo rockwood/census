@@ -1,3 +1,3 @@
 defprotocol Census.Adapter do
-  def fetch(client, query)
+  def fetch(client, params)
 end

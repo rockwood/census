@@ -1,3 +1,3 @@
 defmodule Census do
-  defdelegate fetch(client, query), to: Census.Adapter
+  defdelegate fetch(client, params), to: Census.Adapter
 end
