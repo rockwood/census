@@ -8,7 +8,7 @@ defmodule Census.Endpoint do
   end
 
   defp query_params(%{fields: fields, level: level, within: within}) do
-    [:get, :for, :within]
+    [:get, :for, :in]
     |> Enum.zip([fields, level, within])
     |> Enum.reject(fn {_, v} -> v == nil || v == "" end)
     |> Enum.map(fn {k, v} -> "#{k}=#{v}" end)
