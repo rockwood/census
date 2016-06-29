@@ -31,7 +31,7 @@ defmodule Census.Mixfile do
   end
 
   def docs do
-    [main: "README", extras: ["README.md"]]
+    [main: "readme", extras: ["README.md"]]
   end
 
   def package do
