@@ -3,11 +3,10 @@ defmodule Census.EndToEndTest do
   alias Census.{Client}
 
   @moduletag :integration
-  @api_key System.get_env("CENSUS_API_KEY")
 
   describe "fetch/2" do
     setup do
-      client = Client.new(@api_key)
+      client = Client.new(System.get_env("CENSUS_API_KEY"))
       {:ok, client: client}
     end
 
