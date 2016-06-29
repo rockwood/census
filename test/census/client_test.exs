@@ -1,6 +1,7 @@
 defmodule Census.ClientTest do
   use ExUnit.Case
   alias Census.Client
+  doctest Census.Client
 
   describe "new/2" do
     test "sets default options" do

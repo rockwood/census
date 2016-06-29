@@ -1,6 +1,7 @@
 defmodule Census.ResponseTest do
   use ExUnit.Case
   alias Census.Response
+  doctest Census.Response
 
   describe "decode!/1" do
     setup do

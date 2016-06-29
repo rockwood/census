@@ -1,6 +1,7 @@
 defmodule Census.QueryTest do
   use ExUnit.Case
   alias Census.{Query, Client}
+  doctest Census.Query
 
   describe "url/1" do
     setup do
