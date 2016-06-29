@@ -1,17 +1,16 @@
 defmodule Census.Response do
-  defstruct results: []
+  defstruct query: %Census.Query{}, results: []
 
-  def decode(%{status_code: 200, body: body}) do
+  def decode(query, %{status_code: 200, body: body}) do
     case Poison.decode(body) do
-      {:ok, json} -> {:ok, struct(__MODULE__, results: extract_results(json))}
-      {:error, {:invalid, _}} -> {:error, "invalid response - #{body}"}
-      {:error, :invalid} -> {:error, "invalid response - #{body}"}
+      {:ok, json} -> {:ok, struct(__MODULE__, query: query, results: extract_results(json))}
+      {:error, _} -> {:error, "Invalid response - #{body}"}
     end
   end
-  def decode(%{status_code: 302, body: _body}) do
+  def decode(_query, %{status_code: 302, body: _body}) do
     {:error, "302 - Not authorized. Please check your API key."}
   end
-  def decode(%{status_code: status_code, body: body}) do
+  def decode(_query, %{status_code: status_code, body: body}) do
     {:error, "#{status_code} - #{body}"}
   end
 

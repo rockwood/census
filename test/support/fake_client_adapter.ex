@@ -4,6 +4,6 @@ defimpl Census.Adapter, for: Census.FakeClient do
   def fetch(client, params) do
     query = Query.new(client, params)
     response = FakeClientStore.get_response(query)
-    Response.decode(response)
+    Response.decode(query, response)
   end
 end
