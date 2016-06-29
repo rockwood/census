@@ -40,8 +40,7 @@ defmodule Census.Mixfile do
       maintainers: ["Kevin Rockwood"],
       licenses: ["Apache 2.0"],
       links: %{
-        "GitHub" => "https://github.com/rockwood/census",
-        "Docs" => "https://hexdocs.pm/census"
+        "GitHub" => "https://github.com/rockwood/census"
       }
     ]
   end
