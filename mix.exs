@@ -5,14 +5,16 @@ defmodule Census.Mixfile do
     [
       app: :census,
       name: "Census",
+      description: "Elixir library for interacting with api.census.gov",
       version: "0.1.0",
-      source_url: "https://github.com/rockwood/census",
       elixir: "~> 1.3",
+      source_url: "https://github.com/rockwood/census",
       elixirc_paths: elixirc_paths(Mix.env),
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
       deps: deps(),
-      docs: [main: "README", extras: ["README.md"]]
+      docs: docs(),
+      package: package()
     ]
   end
 
@@ -25,6 +27,22 @@ defmodule Census.Mixfile do
       {:ex_doc, "~> 0.12", only: :dev},
       {:poison, "~> 2.0"},
       {:httpoison, "~> 0.9.0"}
+    ]
+  end
+
+  def docs do
+    [main: "README", extras: ["README.md"]]
+  end
+
+  def package do
+    [
+      name: :census,
+      maintainers: ["Kevin Rockwood"],
+      licenses: ["Apache 2.0"],
+      links: %{
+        "GitHub" => "https://github.com/rockwood/census",
+        "Docs" => "https://hexdocs.pm/census"
+      }
     ]
   end
 
