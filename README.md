@@ -41,7 +41,7 @@ iex> response.results
 Here, we're querying the total population for each county in Wisconsin. Documentation for available
 query parameters can be found at [api.census.gov/data.html](http://api.census.gov/data.html)
 
-This library makes no attempt to coarse returned values. Almost everything is returned as a string, 
+This library makes no attempt to coerce returned values. Almost everything is returned as a string, 
 so you'll need to implement your own coercion if necessary.
 
 ## License
