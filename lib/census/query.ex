@@ -22,7 +22,7 @@ defmodule Census.Query do
       }
   """
 
-  @spec new(client :: Census.Client.t, params :: Keyword.t) :: Census.Query.t
+  @spec new(Census.Client.t, Keyword.t) :: Census.Query.t
   def new(client, params) do
     struct(__MODULE__, Keyword.put(params, :client, client))
   end
@@ -38,7 +38,7 @@ defmodule Census.Query do
       "http://api.census.gov/data/2010/sf1?key=YOUR_API_KEY&get=NAME&for=COUNTY:*&in=STATE:55"
   """
 
-  @spec url(query :: Census.Query.t) :: String.t
+  @spec url(Census.Query.t) :: String.t
   def url(query) do
     "#{endpoint(query)}?#{params(query)}"
   end

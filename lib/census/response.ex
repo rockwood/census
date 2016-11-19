@@ -1,11 +1,10 @@
 defmodule Census.Response do
   defstruct query: %Census.Query{}, results: []
+  @type t :: %__MODULE__{query: Census.Query.t, results: []}
 
   @moduledoc """
   Struct representing an API response.
   """
-
-  @type t :: %__MODULE__{query: Census.Query.t, results: []}
 
   @doc """
   Process a query and api response.

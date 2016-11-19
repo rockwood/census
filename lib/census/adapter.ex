@@ -17,7 +17,6 @@ defprotocol Census.Adapter do
       iex> client = Census.Client.new("YOUR_API_KEY")
       iex> {:ok, response} = Census.Adapter.fetch(client, get: "NAME", foreach: "COUNTY:*", within: "STATE:*")
   """
-  @spec fetch(client :: Census.Client.t, params :: Keyword.t) :: {:ok, Census.Response.t}
-                                                               | {:error, String.t}
+  @spec fetch(Census.Client.t, Keyword.t) :: {:ok, Census.Response.t} | {:error, String.t}
   def fetch(client, params)
 end
