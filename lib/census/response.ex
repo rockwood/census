@@ -11,7 +11,7 @@ defmodule Census.Response do
   Process a query and api response.
   """
 
-  @spec decode(query :: Census.Query.t, resp :: %{}) :: {:ok, Census.Response.t} | {:error, String.t}
+  @spec decode(Census.Query.t, map) :: {:ok, __MODULE__.t} | {:error, String.t}
   def decode(query, %{status_code: 200, body: body}) do
     case Poison.decode(body) do
       {:ok, json} -> {:ok, struct(__MODULE__, query: query, results: extract_results(json))}
