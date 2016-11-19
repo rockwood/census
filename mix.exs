@@ -26,7 +26,8 @@ defmodule Census.Mixfile do
     [
       {:ex_doc, "~> 0.14", only: :dev},
       {:poison, "~> 2.0"},
-      {:httpoison, "~> 0.9.0"}
+      {:httpoison, "~> 0.9.0"},
+      {:dialyxir, "~> 0.4", only: [:dev]}
     ]
   end
 
