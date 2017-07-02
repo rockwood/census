@@ -6,8 +6,8 @@ defmodule Census.Mixfile do
       app: :census,
       name: "Census",
       description: "Elixir library for interacting with api.census.gov",
-      version: "0.1.2",
-      elixir: "~> 1.3",
+      version: "0.1.3",
+      elixir: "~> 1.4",
       source_url: "https://github.com/rockwood/census",
       elixirc_paths: elixirc_paths(Mix.env),
       build_embedded: Mix.env == :prod,
@@ -24,10 +24,10 @@ defmodule Census.Mixfile do
 
   defp deps do
     [
-      {:ex_doc, "~> 0.14", only: :dev},
-      {:poison, "~> 2.0"},
-      {:httpoison, "~> 0.9.0"},
-      {:dialyxir, "~> 0.4", only: [:dev]}
+      {:ex_doc, "~> 0.16", only: :dev},
+      {:poison, "~> 3.1"},
+      {:httpoison, "~> 0.12"},
+      {:dialyxir, "~> 0.5", only: [:dev]}
     ]
   end
 
