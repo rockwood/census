@@ -26,7 +26,7 @@ Get an api key at [api.census.gov/data/key_signup.html](http://api.census.gov/da
 iex> client = Census.client(YOUR_API_KEY, dataset: "SF1", vintage: 2010)
 ```
 
-Clients will default to the 2010 SF1 dataset. Other datasets are available at 
+Clients will default to the 2010 SF1 dataset. Other datasets are available at
 [census.gov](http://www.census.gov/data/developers/data-sets.html)
 
 ### Query the api
@@ -40,12 +40,9 @@ iex> resp.results
 [%{"NAME" => "Adams County", "P0010001" => "20875", ...}]
 ```
 
-This library makes no attempt to coerce returned values. Almost everything is returned as a string, 
+This library makes no attempt to coerce returned values. Almost everything is returned as a string,
 so you'll need to implement your own coercion if necessary.
 
 ## License
 
 This software is licensed under the [Apache 2 License](LICENSE).
-
-
-

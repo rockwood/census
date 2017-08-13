@@ -44,7 +44,7 @@ defmodule Census.Query do
   end
 
   defp endpoint(%{client: %{vintage: vintage, dataset: dataset}}) do
-    "http://api.census.gov/data/#{vintage}/#{String.downcase(dataset)}"
+    "https://api.census.gov/data/#{vintage}/#{String.downcase(dataset)}"
   end
 
   defp params(%{client: %{api_key: api_key}, get: get, foreach: foreach, within: within}) do
