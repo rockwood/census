@@ -35,7 +35,7 @@ defmodule Census.Query do
       iex> client = Census.Client.new("YOUR_API_KEY")
       iex> query = Census.Query.new(client, get: "NAME", foreach: "COUNTY:*", within: "STATE:55")
       iex> Census.Query.url(query)
-      "http://api.census.gov/data/2010/sf1?key=YOUR_API_KEY&get=NAME&for=COUNTY:*&in=STATE:55"
+      "https://api.census.gov/data/2010/sf1?key=YOUR_API_KEY&get=NAME&for=COUNTY:*&in=STATE:55"
   """
 
   @spec url(Census.Query.t) :: String.t
