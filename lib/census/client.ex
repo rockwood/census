@@ -1,5 +1,5 @@
 defmodule Census.Client do
-  defstruct api_key: "", dataset: "SF1", vintage: "2010"
+  defstruct api_key: "", dataset: "SF1", program: "dec", vintage: "2010"
 
   @moduledoc """
   Struct representing an API client.
@@ -18,7 +18,7 @@ defmodule Census.Client do
   Clients default to the 2010 SF1 dataset. To set an alternate dataset and vintage:
 
       iex> Census.Client.new("YOUR_API_KEY", dataset: "ACS5", vintage: "2005")
-      %Census.Client{api_key: "YOUR_API_KEY", dataset: "ACS5", vintage: "2005"}
+      %Census.Client{api_key: "YOUR_API_KEY", dataset: "ACS5", program: "dec", vintage: "2005"}
   """
   @spec new(String.t, Keyword.t) :: __MODULE__.t
   def new(api_key, options \\ []) do

@@ -12,7 +12,7 @@ defmodule Census.QueryTest do
 
     test "it returns the correct endpoint", %{query: query} do
       endpoint = Query.url(query)
-      assert endpoint =~ "/2000/dataset?key=API_KEY&get=FIELDS&for=STATE:01&in=COUNTY:02"
+      assert endpoint =~ "/2000/dec/dataset?key=API_KEY&get=FIELDS&for=STATE:01&in=COUNTY:02"
     end
 
     test "it filters unused params", %{query: query} do

@@ -13,11 +13,11 @@ defmodule Census.Query do
   Usage:
 
       iex> client = Census.Client.new("YOUR_API_KEY")
-      iex> Census.Query.new(client, get: "NAME,P0010001", foreach: "COUNTY:*", within: "STATE:55")
+      iex> Census.Query.new(client, get: "NAME,H010001", foreach: "COUNTY:*", within: "STATE:55")
       %Census.Query{
         client: %Census.Client{api_key: "YOUR_API_KEY", dataset: "SF1", vintage: "2010"},
         foreach: "COUNTY:*",
-        get: "NAME,P0010001",
+        get: "NAME,H010001",
         within: "STATE:55"
       }
   """
@@ -35,7 +35,7 @@ defmodule Census.Query do
       iex> client = Census.Client.new("YOUR_API_KEY")
       iex> query = Census.Query.new(client, get: "NAME", foreach: "COUNTY:*", within: "STATE:55")
       iex> Census.Query.url(query)
-      "https://api.census.gov/data/2010/sf1?key=YOUR_API_KEY&get=NAME&for=COUNTY:*&in=STATE:55"
+      "https://api.census.gov/data/2010/dec/sf1?key=YOUR_API_KEY&get=NAME&for=COUNTY:*&in=STATE:55"
   """
 
   @spec url(Census.Query.t) :: String.t
@@ -43,8 +43,8 @@ defmodule Census.Query do
     "#{endpoint(query)}?#{params(query)}"
   end
 
-  defp endpoint(%{client: %{vintage: vintage, dataset: dataset}}) do
-    "https://api.census.gov/data/#{vintage}/#{String.downcase(dataset)}"
+  defp endpoint(%{client: %{vintage: vintage, program: program, dataset: dataset}}) do
+    "https://api.census.gov/data/#{vintage}/#{program}/#{String.downcase(dataset)}"
   end
 
   defp params(%{client: %{api_key: api_key}, get: get, foreach: foreach, within: within}) do

@@ -35,9 +35,9 @@ Here, we're querying the total population for each county in Wisconsin. Document
 query parameters can be found at [api.census.gov/data.html](http://api.census.gov/data.html)
 
 ```elixir
-iex> {:ok, resp} = Census.fetch(client, get: "NAME,P0010001", foreach: "COUNTY:*", within: "STATE:55")
+iex> {:ok, resp} = Census.fetch(client, get: "NAME,H010001", foreach: "COUNTY:*", within: "STATE:55")
 iex> resp.results
-[%{"NAME" => "Adams County", "P0010001" => "20875", ...}]
+[%{"NAME" => "Adams County", "H010001" => "20875", ...}]
 ```
 
 This library makes no attempt to coerce returned values. Almost everything is returned as a string,

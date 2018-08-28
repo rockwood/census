@@ -8,8 +8,8 @@ defmodule Census.ResponseTest do
       {:ok, query: %Census.Query{}}
     end
     test "with a valid response, it returns results", %{query: query} do
-      {:ok, response} = Response.decode(query, %{status_code: 200, body: "[[\"P0010001\",\"state\"],\n[\"3831074\",\"41\"]]"})
-      assert [%{"P0010001" => "3831074", "state" => "41"}] = response.results
+      {:ok, response} = Response.decode(query, %{status_code: 200, body: "[[\"H010001\",\"state\"],\n[\"3831074\",\"41\"]]"})
+      assert [%{"H010001" => "3831074", "state" => "41"}] = response.results
     end
 
     test "with a 302, it returns an unauthorized message", %{query: query} do

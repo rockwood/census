@@ -11,9 +11,9 @@ defmodule Census.EndToEndTest do
     end
 
     test "returns a result", %{client: client} do
-      params = [get: "NAME,P0010001", foreach: "COUNTY:*", within: "STATE:55"]
+      params = [get: "NAME,H010001", foreach: "COUNTY:*", within: "STATE:55"]
       {:ok, response} = Census.fetch(client, params)
-      assert %{"NAME" => "Adams County"} = hd(response.results)
+      assert %{"NAME" => "Green County, Wisconsin"} = hd(response.results)
     end
   end
 end
