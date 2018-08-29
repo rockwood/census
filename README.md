@@ -10,10 +10,6 @@ Add `census` to your list of dependencies in `mix.exs`:
 def deps do
   [{:census, "~> 0.1.0"}]
 end
-
-def application do
-  [applications: [:census]]
-end
 ```
 
 ## Usage
