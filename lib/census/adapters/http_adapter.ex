@@ -6,13 +6,14 @@ defmodule Census.HttpAdapter do
   @connect_options [
     timeout: 30_000,
     connect_timeout: 30_000,
-    recv_timeout: 30_000,
+    recv_timeout: 30_000
   ]
 
   def fetch(client, params) do
     query = Query.new(client, params)
+
     query
-    |> Query.url
+    |> Query.url()
     |> HTTPoison.get([], @connect_options)
     |> case do
       {:ok, response} -> Response.decode(query, response)

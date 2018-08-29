@@ -8,9 +8,7 @@ defmodule Census.FakeAdapter do
   end
 
   def enqueue_response(query, response) do
-    Agent.update __MODULE__, fn(state) ->
-      Map.put(state, Query.url(query), response)
-    end
+    Agent.update(__MODULE__, &Map.put(&1, Query.url(query), response))
   end
 
   @impl true
@@ -20,8 +18,7 @@ defmodule Census.FakeAdapter do
   end
 
   defp get_response(query) do
-    Agent.get __MODULE__, fn(state) ->
-      Map.get(state, Query.url(query), %{status_code: 200, body: "[[], []]"})
-    end
+    default_response = %{status_code: 200, body: "[[], []]"}
+    Agent.get(__MODULE__, &Map.get(&1, Query.url(query), default_response))
   end
 end

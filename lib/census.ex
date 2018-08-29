@@ -14,7 +14,7 @@ defmodule Census do
       iex> Census.client("YOUR_API_KEY", dataset: "ACS5", vintage: "2005")
       %Census.Client{api_key: "YOUR_API_KEY", dataset: "ACS5", program: "dec", vintage: "2005"}
   """
-  @spec client(String.t, Keyword.t) :: Client.t
+  @spec client(String.t(), Keyword.t()) :: Client.t()
   def client(api_key, options \\ []) do
     struct!(Client, Keyword.put(options, :api_key, api_key))
   end

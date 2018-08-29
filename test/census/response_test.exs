@@ -7,8 +7,14 @@ defmodule Census.ResponseTest do
     setup do
       {:ok, query: %Census.Query{}}
     end
+
     test "with a valid response, it returns results", %{query: query} do
-      {:ok, response} = Response.decode(query, %{status_code: 200, body: "[[\"H010001\",\"state\"],\n[\"3831074\",\"41\"]]"})
+      {:ok, response} =
+        Response.decode(query, %{
+          status_code: 200,
+          body: "[[\"H010001\",\"state\"],\n[\"3831074\",\"41\"]]"
+        })
+
       assert [%{"H010001" => "3831074", "state" => "41"}] = response.results
     end
 
