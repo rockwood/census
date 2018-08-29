@@ -21,7 +21,7 @@ defmodule Census.FakeAdapter do
 
   defp get_response(query) do
     Agent.get __MODULE__, fn(state) ->
-      state[Query.url(query)]
+      Map.get(state, Query.url(query), %{status_code: 200, body: "[[], []]"})
     end
   end
 end

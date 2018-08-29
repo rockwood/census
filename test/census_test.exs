@@ -3,6 +3,10 @@ defmodule CensusTest do
   alias Census.{Client, FakeAdapter, Query}
   doctest Census
 
+  setup do
+    Application.put_env(:census, :adapter, Census.FakeAdapter)
+  end
+
   describe "fetch/2" do
     setup do
       client = %Client{}

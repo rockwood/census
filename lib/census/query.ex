@@ -12,7 +12,7 @@ defmodule Census.Query do
 
   Usage:
 
-      iex> client = Census.Client.new("YOUR_API_KEY")
+      iex> client = %Census.Client{api_key: "YOUR_API_KEY"}
       iex> Census.Query.new(client, get: "NAME,H010001", foreach: "COUNTY:*", within: "STATE:55")
       %Census.Query{
         client: %Census.Client{api_key: "YOUR_API_KEY", dataset: "SF1", vintage: "2010"},
@@ -32,7 +32,7 @@ defmodule Census.Query do
 
   Usage:
 
-      iex> client = Census.Client.new("YOUR_API_KEY")
+      iex> client = %Census.Client{api_key: "YOUR_API_KEY"}
       iex> query = Census.Query.new(client, get: "NAME", foreach: "COUNTY:*", within: "STATE:55")
       iex> Census.Query.url(query)
       "https://api.census.gov/data/2010/dec/sf1?key=YOUR_API_KEY&get=NAME&for=COUNTY:*&in=STATE:55"
