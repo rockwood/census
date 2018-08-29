@@ -1,5 +1,7 @@
-defmodule Census.FakeClientStore do
-  alias Census.Query
+defmodule Census.FakeAdapter do
+  @behaviour Census.Adapter
+
+  alias Census.{Query, Response}
 
   def start_link do
     Agent.start_link(fn -> %{} end, name: __MODULE__)
@@ -11,7 +13,13 @@ defmodule Census.FakeClientStore do
     end
   end
 
-  def get_response(query) do
+  @impl true
+  def fetch(client, params) do
+    query = Query.new(client, params)
+    Response.decode(query, get_response(query))
+  end
+
+  defp get_response(query) do
     Agent.get __MODULE__, fn(state) ->
       state[Query.url(query)]
     end

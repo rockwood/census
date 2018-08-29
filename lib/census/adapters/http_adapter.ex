@@ -1,4 +1,6 @@
-defimpl Census.Adapter, for: Census.Client do
+defmodule Census.HttpAdapter do
+  @behaviour Census.Adapter
+
   alias Census.{Query, Response}
 
   @connect_options [

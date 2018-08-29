@@ -4,9 +4,13 @@ defmodule Census.EndToEndTest do
 
   @moduletag :integration
 
+  setup do
+    Application.put_env(:census, :adapter, Census.HttpAdapter)
+  end
+
   describe "fetch/2" do
     setup do
-      client = Client.new(System.get_env("CENSUS_API_KEY"))
+      client = %Client{api_key: System.get_env("CENSUS_API_KEY")}
       {:ok, client: client}
     end
 

@@ -1,14 +1,14 @@
 defmodule CensusTest do
   use ExUnit.Case
-  alias Census.{FakeClient, FakeClientStore, Query}
+  alias Census.{Client, FakeAdapter, Query}
   doctest Census
 
   describe "fetch/2" do
     setup do
-      client = FakeClient.new()
+      client = %Client{}
       query = Query.new(client, fields: "H010001", level: "STATE:36")
       fake_response = %{status_code: 200, body: File.read!("test/fixtures/ohio_pop.json")}
-      FakeClientStore.enqueue_response(query, fake_response)
+      FakeAdapter.enqueue_response(query, fake_response)
       {:ok, client: client}
     end
 
