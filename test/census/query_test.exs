@@ -6,7 +6,7 @@ defmodule Census.QueryTest do
   describe "url/1" do
     setup do
       client = %Client{api_key: "API_KEY", vintage: 2000, dataset: "DATASET"}
-      query = Query.new(client, get: "FIELDS", foreach: "STATE:01", within: "COUNTY:02")
+      query = %Query{client: client, get: "FIELDS", foreach: "STATE:01", within: "COUNTY:02"}
       {:ok, client: client, query: query}
     end
 

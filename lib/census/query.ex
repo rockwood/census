@@ -8,37 +8,17 @@ defmodule Census.Query do
   @type t :: %__MODULE__{}
 
   @doc """
-  Create a new query.
-
-  Usage:
-
-      iex> client = %Census.Client{api_key: "YOUR_API_KEY"}
-      iex> Census.Query.new(client, get: "NAME,H010001", foreach: "COUNTY:*", within: "STATE:55")
-      %Census.Query{
-        client: %Census.Client{api_key: "YOUR_API_KEY", dataset: "SF1", vintage: "2010"},
-        foreach: "COUNTY:*",
-        get: "NAME,H010001",
-        within: "STATE:55"
-      }
-  """
-
-  @spec new(Census.Client.t(), Keyword.t()) :: Census.Query.t()
-  def new(client, params) do
-    struct(__MODULE__, Keyword.put(params, :client, client))
-  end
-
-  @doc """
   Returns the api url for a given query.
 
   Usage:
 
       iex> client = %Census.Client{api_key: "YOUR_API_KEY"}
-      iex> query = Census.Query.new(client, get: "NAME", foreach: "COUNTY:*", within: "STATE:55")
+      iex> query = %Census.Query{client: client, get: "NAME", foreach: "COUNTY:*", within: "STATE:55"}
       iex> Census.Query.url(query)
       "https://api.census.gov/data/2010/dec/sf1?key=YOUR_API_KEY&get=NAME&for=COUNTY:*&in=STATE:55"
   """
 
-  @spec url(Census.Query.t()) :: String.t()
+  @spec url(__MODULE__.t()) :: String.t()
   def url(query) do
     "#{endpoint(query)}?#{params(query)}"
   end

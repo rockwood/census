@@ -1,5 +1,5 @@
 defmodule Census do
-  alias Census.Client
+  alias Census.{Client, Query}
 
   @doc """
   Create a new api client.
@@ -37,6 +37,8 @@ defmodule Census do
   """
 
   def fetch(client, params) do
-    Application.get_env(:census, :adapter).fetch(client, params)
+    query = struct!(Query, Keyword.put(params, :client, client))
+
+    Application.get_env(:census, :adapter).run(query)
   end
 end

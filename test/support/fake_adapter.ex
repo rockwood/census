@@ -12,8 +12,7 @@ defmodule Census.FakeAdapter do
   end
 
   @impl true
-  def fetch(client, params) do
-    query = Query.new(client, params)
+  def run(query) do
     Response.decode(query, get_response(query))
   end
 

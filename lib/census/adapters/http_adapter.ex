@@ -9,9 +9,8 @@ defmodule Census.HttpAdapter do
     recv_timeout: 30_000
   ]
 
-  def fetch(client, params) do
-    query = Query.new(client, params)
-
+  @impl true
+  def run(query) do
     query
     |> Query.url()
     |> HTTPoison.get([], @connect_options)
