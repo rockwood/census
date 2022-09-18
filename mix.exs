@@ -25,8 +25,8 @@ defmodule Census.Mixfile do
   defp deps do
     [
       {:ex_doc, "~> 0.16", only: :dev},
-      {:poison, "~> 4.0"},
-      {:httpoison, "~> 1.3"},
+      {:poison, "~> 5.0.0"},
+      {:httpoison, "~> 1.8.2"},
       {:dialyxir, "~> 0.5", only: [:dev]}
     ]
   end
