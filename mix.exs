@@ -6,7 +6,7 @@ defmodule Census.Mixfile do
       app: :census,
       name: "Census",
       description: "Elixir library for interacting with api.census.gov",
-      version: "0.2.0",
+      version: "0.3.0",
       elixir: "~> 1.7",
       source_url: "https://github.com/rockwood/census",
       elixirc_paths: elixirc_paths(Mix.env()),
