@@ -39,7 +39,7 @@ defmodule Census.Mixfile do
     [
       name: :census,
       maintainers: ["Kevin Rockwood"],
-      licenses: ["Apache 2.0"],
+      licenses: ["Apache-2.0"],
       links: %{
         "GitHub" => "https://github.com/rockwood/census"
       }
