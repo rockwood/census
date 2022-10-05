@@ -8,7 +8,7 @@ Add `census` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:census, "~> 0.2"}]
+  [{:census, "~> 0.3"}]
 end
 ```
 
